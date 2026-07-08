@@ -1,0 +1,176 @@
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+const resources = {
+  en: {
+    translation: {
+      nav: {
+        about: "About",
+        projects: "Projects",
+        techs: "Techs",
+        certifications: "Certifications",
+        contact: "Contact",
+        theme_light: "Light mode",
+        theme_dark: "Dark mode",
+        lang: "Language",
+      },
+      hero: {
+        available: "Available for opportunities",
+        role1: "Backend Developer",
+        role2: "Cybersecurity Student",
+        description:
+          "I engineer resilient backend systems and explore the offensive side of security — building infrastructure that's meant to be broken, and hardened.",
+        view_projects: "view_projects()",
+        get_in_touch: "get_in_touch()",
+      },
+      about: {
+        n: "01",
+        title: "About Me",
+        p1_a: "I'm a backend developer with a growing passion for cybersecurity. I spend my days designing ",
+        p1_b: "scalable APIs",
+        p1_c: ", tuning databases, and wiring together services that quietly do the heavy lifting.",
+        p2_a: "My nights lean darker — I study ",
+        p2_b: "ethical hacking, network security, and offensive tooling",
+        p2_c: ", treating every system I build as one I'll eventually try to break.",
+        p3: "My goal: engineer software that's not just performant, but genuinely hard to compromise.",
+        focus: "Focus",
+        focus_v: "Backend",
+        studying: "Studying",
+        studying_v: "InfoSec",
+        based: "Based in",
+        based_v: "Remote",
+      },
+      projects: {
+        n: "02",
+        title: "Projects",
+        subtitle: "Selected work — backend systems, security tooling and side experiments.",
+      },
+      techs: {
+        n: "03",
+        title: "Technologies",
+        subtitle: "The stack I lean on for building services — and for taking them apart.",
+        backend: "Backend",
+        cybersecurity: "Cybersecurity",
+      },
+      certs: {
+        n: "04",
+        title: "Certifications",
+        subtitle: "Credentials — earned, in-progress, and on the roadmap.",
+        completed: "Completed",
+        in_progress: "In progress",
+        planned: "Planned",
+      },
+      contact: {
+        n: "05",
+        title: "Contact",
+        subtitle: "Got an idea, a role, or a system worth breaking? Let's talk.",
+        name: "name",
+        email: "email",
+        message: "message",
+        name_ph: "Your name",
+        email_ph: "you@domain.com",
+        message_ph: "Say something...",
+        send: "send()",
+        sent: "✓ message_sent — I'll reply soon.",
+        transport: "encrypted transport · no tracking",
+        or: "or reach out at",
+        invalid_email: "Please enter a valid email address.",
+        required: "This field is required.",
+      },
+      footer: {
+        built: "built with intent.",
+      },
+    },
+  },
+  es: {
+    translation: {
+      nav: {
+        about: "Sobre mí",
+        projects: "Proyectos",
+        techs: "Tecnologías",
+        certifications: "Certificaciones",
+        contact: "Contacto",
+        theme_light: "Modo claro",
+        theme_dark: "Modo oscuro",
+        lang: "Idioma",
+      },
+      hero: {
+        available: "Disponible para oportunidades",
+        role1: "Desarrollador Backend",
+        role2: "Estudiante de Ciberseguridad",
+        description:
+          "Diseño sistemas backend resilientes y exploro el lado ofensivo de la seguridad — construyendo infraestructura pensada para ser rota y fortalecida.",
+        view_projects: "ver_proyectos()",
+        get_in_touch: "contactar()",
+      },
+      about: {
+        n: "01",
+        title: "Sobre mí",
+        p1_a: "Soy desarrollador backend con una pasión creciente por la ciberseguridad. Mis días los paso diseñando ",
+        p1_b: "APIs escalables",
+        p1_c: ", ajustando bases de datos y conectando servicios que sostienen el trabajo pesado en silencio.",
+        p2_a: "Mis noches son más oscuras — estudio ",
+        p2_b: "hacking ético, seguridad de redes y herramientas ofensivas",
+        p2_c: ", tratando cada sistema que construyo como uno que tarde o temprano intentaré romper.",
+        p3: "Mi objetivo: crear software que no solo sea eficiente, sino genuinamente difícil de comprometer.",
+        focus: "Enfoque",
+        focus_v: "Backend",
+        studying: "Estudiando",
+        studying_v: "InfoSec",
+        based: "Ubicación",
+        based_v: "Remoto",
+      },
+      projects: {
+        n: "02",
+        title: "Proyectos",
+        subtitle: "Trabajo seleccionado — sistemas backend, herramientas de seguridad y experimentos.",
+      },
+      techs: {
+        n: "03",
+        title: "Tecnologías",
+        subtitle: "El stack en el que confío para construir servicios — y también para desmontarlos.",
+        backend: "Backend",
+        cybersecurity: "Ciberseguridad",
+      },
+      certs: {
+        n: "04",
+        title: "Certificaciones",
+        subtitle: "Credenciales — obtenidas, en progreso y en el horizonte.",
+        completed: "Completada",
+        in_progress: "En progreso",
+        planned: "Planeada",
+      },
+      contact: {
+        n: "05",
+        title: "Contacto",
+        subtitle: "¿Tienes una idea, un puesto o un sistema para romper? Hablemos.",
+        name: "nombre",
+        email: "correo",
+        message: "mensaje",
+        name_ph: "Tu nombre",
+        email_ph: "tu@dominio.com",
+        message_ph: "Escribe algo...",
+        send: "enviar()",
+        sent: "✓ mensaje_enviado — te responderé pronto.",
+        transport: "transporte cifrado · sin seguimiento",
+        or: "o escríbeme a",
+        invalid_email: "Por favor introduce un correo válido.",
+        required: "Este campo es obligatorio.",
+      },
+      footer: {
+        built: "hecho con intención.",
+      },
+    },
+  },
+};
+
+if (!i18n.isInitialized) {
+  i18n.use(initReactI18next).init({
+    resources,
+    lng: "es",
+    fallbackLng: "es",
+    interpolation: { escapeValue: false },
+  });
+}
+
+export default i18n;
