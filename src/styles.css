@@ -35,7 +35,6 @@
 
 :root {
   --radius: 0.5rem;
-  /* Deep near-black cyber theme */
   --background: oklch(0.16 0.01 260);
   --foreground: oklch(0.96 0.01 240);
   --card: oklch(0.19 0.012 260);
@@ -56,9 +55,33 @@
   --input: oklch(0.24 0.02 260);
   --ring: oklch(0.88 0.22 145);
 
-  --neon: oklch(0.88 0.22 145); /* matrix green */
+  --neon: oklch(0.88 0.22 145);
   --neon-dim: oklch(0.88 0.22 145 / 0.5);
-  --cyber: oklch(0.75 0.18 220); /* cyber blue */
+  --cyber: oklch(0.75 0.18 220);
+}
+
+.light {
+  --background: oklch(0.985 0.005 240);
+  --foreground: oklch(0.2 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 260);
+  --primary: oklch(0.6 0.18 220);
+  --primary-foreground: oklch(0.99 0.005 240);
+  --secondary: oklch(0.95 0.01 240);
+  --secondary-foreground: oklch(0.2 0.02 260);
+  --muted: oklch(0.95 0.01 240);
+  --muted-foreground: oklch(0.45 0.02 250);
+  --accent: oklch(0.94 0.02 220);
+  --accent-foreground: oklch(0.2 0.02 260);
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.94 0.01 240);
+  --ring: oklch(0.6 0.18 220);
+
+  --neon: oklch(0.55 0.18 155);
+  --neon-dim: oklch(0.55 0.18 155 / 0.4);
+  --cyber: oklch(0.55 0.2 240);
 }
 
 @layer base {
@@ -73,26 +96,52 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     background-image:
-      radial-gradient(circle at 20% 0%, oklch(0.88 0.22 145 / 0.06), transparent 40%),
-      radial-gradient(circle at 80% 40%, oklch(0.75 0.18 220 / 0.05), transparent 40%),
-      linear-gradient(to bottom, transparent 0%, transparent 100%);
+      radial-gradient(circle at 20% 0%, var(--neon-dim), transparent 40%),
+      radial-gradient(circle at 80% 40%, var(--cyber), transparent 55%);
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
   }
 }
 
 @utility text-neon {
   color: var(--neon);
-  text-shadow: 0 0 10px oklch(0.88 0.22 145 / 0.5);
+  text-shadow: 0 0 10px var(--neon-dim);
 }
 
 @utility glow-border {
   box-shadow:
-    0 0 0 1px oklch(0.88 0.22 145 / 0.4),
-    0 0 20px oklch(0.88 0.22 145 / 0.15);
+    0 0 0 1px var(--neon-dim),
+    0 0 20px var(--neon-dim);
 }
 
 @utility grid-bg {
   background-image:
-    linear-gradient(oklch(0.88 0.22 145 / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.88 0.22 145 / 0.06) 1px, transparent 1px);
+    linear-gradient(var(--neon-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
   background-size: 40px 40px;
+  opacity: 0.15;
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes hero-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+}
+@utility animate-hero-glow {
+  animation: hero-glow 5s ease-in-out infinite;
+}
+@utility animate-hero-fade-up {
+  animation: hero-fade-up 0.7s ease-out both;
 }
