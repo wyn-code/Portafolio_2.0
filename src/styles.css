@@ -145,3 +145,18 @@
 @utility animate-hero-fade-up {
   animation: hero-fade-up 0.7s ease-out both;
 }
+
+@keyframes workflow-draw {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes workflow-draw-v {
+  from { height: 0; }
+  to { height: 100%; }
+}
+.workflow-line {
+  animation: workflow-draw 2.4s ease-out 0.2s both;
+}
+.workflow-line-v {
+  animation: workflow-draw-v 2.4s ease-out 0.2s both;
+}
