@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Github,
@@ -22,6 +22,18 @@ import {
   Sun,
   Moon,
   Languages,
+  Layers,
+  Boxes,
+  Gauge,
+  Sparkles,
+  Users,
+  GraduationCap,
+  ClipboardList,
+  Workflow as WorkflowIcon,
+  Code,
+  TestTube2,
+  Rocket,
+  RefreshCw,
 } from "lucide-react";
 
 import "@/lib/i18n";
