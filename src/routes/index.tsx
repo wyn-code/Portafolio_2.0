@@ -21,7 +21,7 @@ import {
   CheckCircle2,
   Sun,
   Moon,
-  Languages,
+  
   Layers,
   Boxes,
   Gauge,
@@ -114,6 +114,7 @@ function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
+      <CursorGlow />
       <Navbar />
       <Hero />
       <About />
@@ -127,6 +128,39 @@ function Portfolio() {
     </div>
   );
 }
+
+function CursorGlow() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.createElement("div");
+    el.className = "cursor-glow";
+    document.body.appendChild(el);
+    let raf = 0;
+    let x = 0, y = 0, tx = 0, ty = 0;
+    const onMove = (e: MouseEvent) => {
+      tx = e.clientX; ty = e.clientY;
+      el.style.opacity = "1";
+    };
+    const onLeave = () => { el.style.opacity = "0"; };
+    const tick = () => {
+      x += (tx - x) * 0.18;
+      y += (ty - y) * 0.18;
+      el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("mouseleave", onLeave);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseleave", onLeave);
+      el.remove();
+    };
+  }, []);
+  return null;
+}
+
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -224,27 +258,41 @@ function LangToggle() {
     localStorage.setItem("lang", l);
   };
 
+  const OPTIONS: { code: "es" | "en"; flag: string; label: string }[] = [
+    { code: "es", flag: "🇦🇷", label: "Español (Argentina)" },
+    { code: "en", flag: "🇬🇧", label: "English (United Kingdom)" },
+  ];
+
   return (
-    <div className="flex items-center gap-1 rounded-md border border-border bg-card/40 backdrop-blur-md p-1 transition-all duration-300 hover:border-neon/60">
-      <Languages className="h-3.5 w-3.5 text-muted-foreground mx-1" aria-hidden />
-      {(["es", "en"] as const).map((l) => (
-        <button
-          key={l}
-          onClick={() => switchTo(l)}
-          aria-label={l === "es" ? "Español" : "English"}
-          className={`flex h-6 min-w-8 items-center justify-center rounded px-1.5 font-mono text-xs transition-all duration-300 ${
-            lang === l
-              ? "bg-neon/15 text-neon shadow-[0_0_10px_var(--neon-dim)]"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <span className="text-sm leading-none">{l === "es" ? "🇪🇸" : "🇺🇸"}</span>
-          <span className="ml-1 uppercase">{l}</span>
-        </button>
-      ))}
+    <div
+      role="radiogroup"
+      aria-label="Language"
+      className="relative flex items-center gap-0.5 rounded-full border border-border/60 bg-card/30 backdrop-blur-xl p-1 shadow-sm transition-all duration-300 hover:border-neon/50"
+    >
+      {OPTIONS.map((o) => {
+        const active = lang === o.code;
+        return (
+          <button
+            key={o.code}
+            role="radio"
+            aria-checked={active}
+            aria-label={o.label}
+            title={o.label}
+            onClick={() => switchTo(o.code)}
+            className={`relative flex h-7 w-7 items-center justify-center rounded-full text-base leading-none transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon/60 ${
+              active
+                ? "bg-neon/15 shadow-[0_0_14px_var(--neon-dim)] scale-110"
+                : "opacity-60 hover:opacity-100 hover:scale-105"
+            }`}
+          >
+            <span aria-hidden>{o.flag}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }
+
 
 function Navbar() {
   const { t } = useTranslation();
@@ -306,14 +354,105 @@ function Navbar() {
   );
 }
 
+const COMMAND_LINES = [
+  "git status",
+  "git pull",
+  "git push origin main",
+  'git commit -m "Initial commit"',
+  "git checkout main",
+  "git merge feature/auth",
+  "docker compose up -d",
+  "docker ps",
+  "docker logs -f api",
+  "docker build .",
+  "docker exec -it api bash",
+  "python main.py",
+  "uvicorn app.main:app --reload",
+  "pip install fastapi",
+  "pytest -q",
+  "sudo apt update",
+  "sudo apt upgrade -y",
+  "sudo systemctl restart nginx",
+  "chmod +x deploy.sh",
+  "npm install",
+  "pnpm install",
+  "pnpm dev",
+  "npm run build",
+  "SELECT * FROM users;",
+  "SELECT * FROM appointments;",
+  "INSERT INTO businesses ...",
+  "UPDATE appointments SET status='ok'",
+  "DELETE FROM sessions WHERE expired",
+  "HTTP/1.1 200 OK",
+  "JWT verified ✓",
+  "REST API",
+  "FastAPI",
+  "React + TypeScript",
+  "PostgreSQL",
+  "Docker",
+  "Linux",
+  "{ \"json\": true }",
+  "async / await",
+];
+
+function CommandRain() {
+  const [cols, setCols] = useState<
+    { id: number; left: number; delay: number; duration: number; opacity: number; lines: string[] }[]
+  >([]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 10 : 22;
+    const rand = (a: number, b: number) => a + Math.random() * (b - a);
+    const shuffle = <T,>(arr: T[]) => [...arr].sort(() => Math.random() - 0.5);
+    const generated = Array.from({ length: count }, (_, i) => {
+      const lineCount = Math.floor(rand(6, 12));
+      return {
+        id: i,
+        left: (i / count) * 100 + rand(-2, 2),
+        delay: -rand(0, 20),
+        duration: rand(16, 32),
+        opacity: rand(0.05, 0.1),
+        lines: shuffle(COMMAND_LINES).slice(0, lineCount),
+      };
+    });
+    setCols(generated);
+  }, []);
+
+  return (
+    <div className="command-rain" aria-hidden>
+      {cols.map((c) => (
+        <div
+          key={c.id}
+          className="command-rain__col"
+          style={{
+            left: `${c.left}%`,
+            opacity: c.opacity,
+            animationDuration: `${c.duration}s`,
+            animationDelay: `${c.delay}s`,
+          }}
+        >
+          {c.lines.map((l, idx) => (
+            <div key={idx}>{l}</div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Hero() {
+
   const { t } = useTranslation();
   const typed = useTypewriter([t("hero.role1"), t("hero.role2")]);
 
   return (
     <section id="top" className="relative overflow-hidden">
+      <CommandRain />
       <div className="absolute inset-0 grid-bg [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
       <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-28 md:pt-32 md:pb-40 grid md:grid-cols-2 gap-12 items-center">
+
         <div className="space-y-6 animate-hero-fade-up">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 backdrop-blur-md px-3 py-1 font-mono text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-neon animate-pulse" />

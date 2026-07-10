@@ -160,3 +160,66 @@
 .workflow-line-v {
   animation: workflow-draw-v 2.4s ease-out 0.2s both;
 }
+
+/* Command Rain — falling developer commands behind Hero */
+@keyframes command-fall {
+  0%   { transform: translate3d(0, -20%, 0); }
+  100% { transform: translate3d(0, 120%, 0); }
+}
+.command-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  filter: blur(0.6px);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
+          mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
+}
+.command-rain__col {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: nowrap;
+  color: var(--cyber);
+  text-shadow: 0 0 6px color-mix(in oklab, var(--cyber) 60%, transparent);
+  animation-name: command-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+/* Cursor glow follower */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 380px;
+  height: 380px;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 40;
+  transform: translate3d(-50%, -50%, 0);
+  background: radial-gradient(circle, color-mix(in oklab, var(--neon) 22%, transparent) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+@media (hover: none) {
+  .cursor-glow { display: none; }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .command-rain { display: none; }
+  .cursor-glow { display: none; }
+}
+
