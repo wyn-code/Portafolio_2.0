@@ -114,6 +114,7 @@ function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
+      <CursorGlow />
       <Navbar />
       <Hero />
       <About />
@@ -127,6 +128,39 @@ function Portfolio() {
     </div>
   );
 }
+
+function CursorGlow() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.createElement("div");
+    el.className = "cursor-glow";
+    document.body.appendChild(el);
+    let raf = 0;
+    let x = 0, y = 0, tx = 0, ty = 0;
+    const onMove = (e: MouseEvent) => {
+      tx = e.clientX; ty = e.clientY;
+      el.style.opacity = "1";
+    };
+    const onLeave = () => { el.style.opacity = "0"; };
+    const tick = () => {
+      x += (tx - x) * 0.18;
+      y += (ty - y) * 0.18;
+      el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("mouseleave", onLeave);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseleave", onLeave);
+      el.remove();
+    };
+  }, []);
+  return null;
+}
+
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
