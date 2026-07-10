@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Github,
@@ -22,6 +22,18 @@ import {
   Sun,
   Moon,
   Languages,
+  Layers,
+  Boxes,
+  Gauge,
+  Sparkles,
+  Users,
+  GraduationCap,
+  ClipboardList,
+  Workflow as WorkflowIcon,
+  Code,
+  TestTube2,
+  Rocket,
+  RefreshCw,
 } from "lucide-react";
 
 import "@/lib/i18n";
@@ -108,8 +120,58 @@ function Portfolio() {
       <Projects />
       <Techs />
       <Certifications />
+      <Mindset />
+      <Workflow />
       <Contact />
       <Footer />
+    </div>
+  );
+}
+
+function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return { ref, visible };
+}
+
+function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      style={{
+        transitionDelay: `${delay}ms`,
+      }}
+      className={`transition-all duration-700 ease-out ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      } ${className}`}
+    >
+      {children}
     </div>
   );
 }
@@ -601,6 +663,164 @@ function Certifications() {
               </span>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const MINDSET = [
+  { key: "arch", icon: Layers },
+  { key: "solid", icon: Boxes },
+  { key: "sec", icon: Shield },
+  { key: "api", icon: Network },
+  { key: "perf", icon: Gauge },
+  { key: "db", icon: Database },
+  { key: "clean", icon: Sparkles },
+  { key: "user", icon: Users },
+  { key: "learn", icon: GraduationCap },
+] as const;
+
+function Mindset() {
+  const { t } = useTranslation();
+  return (
+    <section id="mindset" className="relative py-24 md:py-32 border-t border-border/50">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeader
+          n={t("mindset.n")}
+          title={t("mindset.title")}
+          subtitle={t("mindset.subtitle")}
+        />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {MINDSET.map((m, i) => (
+            <Reveal key={m.key} delay={i * 80}>
+              <article
+                className="group relative h-full rounded-xl border border-border/60 bg-card/30 backdrop-blur-xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-neon/60 hover:shadow-[0_0_36px_var(--neon-dim)]"
+              >
+                <div
+                  className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background:
+                      "radial-gradient(400px circle at 30% 0%, var(--neon-dim), transparent 60%)",
+                  }}
+                  aria-hidden
+                />
+                <div className="relative">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-neon/40 bg-background/40 text-neon mb-4 group-hover:shadow-[0_0_20px_var(--neon-dim)] transition-shadow">
+                    <m.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-base font-semibold text-foreground group-hover:text-neon transition-colors">
+                    {t(`mindset.items.${m.key}_t`)}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {t(`mindset.items.${m.key}_d`)}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={200} className="mt-10">
+          <blockquote className="relative rounded-2xl border border-neon/30 bg-card/30 backdrop-blur-xl p-8 md:p-10 shadow-[0_0_40px_var(--neon-dim)] overflow-hidden">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-40"
+              style={{
+                background:
+                  "radial-gradient(600px circle at 20% 0%, var(--neon-dim), transparent 55%), radial-gradient(500px circle at 90% 100%, var(--cyber), transparent 55%)",
+              }}
+              aria-hidden
+            />
+            <div className="relative">
+              <div className="font-mono text-4xl text-neon leading-none mb-3">“</div>
+              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed italic">
+                {t("mindset.quote")}
+              </p>
+              <div className="mt-4 font-mono text-xs text-neon">— Massocco Bruno</div>
+            </div>
+          </blockquote>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const WORKFLOW = [
+  { key: "s1", icon: ClipboardList },
+  { key: "s2", icon: WorkflowIcon },
+  { key: "s3", icon: Database },
+  { key: "s4", icon: Server },
+  { key: "s5", icon: Code },
+  { key: "s6", icon: TestTube2 },
+  { key: "s7", icon: Rocket },
+  { key: "s8", icon: RefreshCw },
+] as const;
+
+function Workflow() {
+  const { t } = useTranslation();
+  return (
+    <section id="workflow" className="relative py-24 md:py-32 border-t border-border/50">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeader
+          n={t("workflow.n")}
+          title={t("workflow.title")}
+          subtitle={t("workflow.subtitle")}
+        />
+
+        {/* Desktop horizontal timeline */}
+        <div className="hidden lg:block relative">
+          <div className="relative">
+            <div className="absolute left-0 right-0 top-6 h-px bg-border/60" />
+            <div className="absolute left-0 top-6 h-px bg-gradient-to-r from-neon via-cyber to-transparent workflow-line" />
+            <div className="grid grid-cols-8 gap-4">
+              {WORKFLOW.map((s, i) => (
+                <Reveal key={s.key} delay={i * 150}>
+                  <div className="group flex flex-col items-center text-center">
+                    <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-neon/50 bg-background text-neon shadow-[0_0_20px_var(--neon-dim)] group-hover:scale-110 group-hover:shadow-[0_0_28px_var(--neon-dim)] transition-all duration-300">
+                      <s.icon className="h-5 w-5" />
+                      <span className="absolute -top-2 -right-2 font-mono text-[10px] bg-background border border-neon/50 text-neon rounded-full h-5 w-5 flex items-center justify-center">
+                        {i + 1}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-sm font-semibold text-foreground group-hover:text-neon transition-colors">
+                      {t(`workflow.steps.${s.key}_t`)}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                      {t(`workflow.steps.${s.key}_d`)}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile / tablet vertical timeline */}
+        <div className="lg:hidden relative">
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-border/60" />
+          <div className="absolute left-6 top-0 w-px bg-gradient-to-b from-neon via-cyber to-transparent workflow-line-v" />
+          <div className="space-y-6">
+            {WORKFLOW.map((s, i) => (
+              <Reveal key={s.key} delay={i * 120}>
+                <div className="group relative pl-16">
+                  <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-neon/50 bg-background text-neon shadow-[0_0_18px_var(--neon-dim)]">
+                    <s.icon className="h-5 w-5" />
+                    <span className="absolute -top-2 -right-2 font-mono text-[10px] bg-background border border-neon/50 text-neon rounded-full h-5 w-5 flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                  </div>
+                  <div className="rounded-lg border border-border/60 bg-card/30 backdrop-blur-xl p-4 group-hover:border-neon/50 transition-all">
+                    <h3 className="text-sm font-semibold text-foreground">
+                      {t(`workflow.steps.${s.key}_t`)}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                      {t(`workflow.steps.${s.key}_d`)}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
