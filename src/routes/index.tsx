@@ -354,7 +354,96 @@ function Navbar() {
   );
 }
 
+const COMMAND_LINES = [
+  "git status",
+  "git pull",
+  "git push origin main",
+  'git commit -m "Initial commit"',
+  "git checkout main",
+  "git merge feature/auth",
+  "docker compose up -d",
+  "docker ps",
+  "docker logs -f api",
+  "docker build .",
+  "docker exec -it api bash",
+  "python main.py",
+  "uvicorn app.main:app --reload",
+  "pip install fastapi",
+  "pytest -q",
+  "sudo apt update",
+  "sudo apt upgrade -y",
+  "sudo systemctl restart nginx",
+  "chmod +x deploy.sh",
+  "npm install",
+  "pnpm install",
+  "pnpm dev",
+  "npm run build",
+  "SELECT * FROM users;",
+  "SELECT * FROM appointments;",
+  "INSERT INTO businesses ...",
+  "UPDATE appointments SET status='ok'",
+  "DELETE FROM sessions WHERE expired",
+  "HTTP/1.1 200 OK",
+  "JWT verified ✓",
+  "REST API",
+  "FastAPI",
+  "React + TypeScript",
+  "PostgreSQL",
+  "Docker",
+  "Linux",
+  "{ \"json\": true }",
+  "async / await",
+];
+
+function CommandRain() {
+  const [cols, setCols] = useState<
+    { id: number; left: number; delay: number; duration: number; opacity: number; lines: string[] }[]
+  >([]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 10 : 22;
+    const rand = (a: number, b: number) => a + Math.random() * (b - a);
+    const shuffle = <T,>(arr: T[]) => [...arr].sort(() => Math.random() - 0.5);
+    const generated = Array.from({ length: count }, (_, i) => {
+      const lineCount = Math.floor(rand(6, 12));
+      return {
+        id: i,
+        left: (i / count) * 100 + rand(-2, 2),
+        delay: -rand(0, 20),
+        duration: rand(16, 32),
+        opacity: rand(0.05, 0.1),
+        lines: shuffle(COMMAND_LINES).slice(0, lineCount),
+      };
+    });
+    setCols(generated);
+  }, []);
+
+  return (
+    <div className="command-rain" aria-hidden>
+      {cols.map((c) => (
+        <div
+          key={c.id}
+          className="command-rain__col"
+          style={{
+            left: `${c.left}%`,
+            opacity: c.opacity,
+            animationDuration: `${c.duration}s`,
+            animationDelay: `${c.delay}s`,
+          }}
+        >
+          {c.lines.map((l, idx) => (
+            <div key={idx}>{l}</div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Hero() {
+
   const { t } = useTranslation();
   const typed = useTypewriter([t("hero.role1"), t("hero.role2")]);
 
