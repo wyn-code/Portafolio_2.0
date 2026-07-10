@@ -21,7 +21,7 @@ import {
   CheckCircle2,
   Sun,
   Moon,
-  Languages,
+  
   Layers,
   Boxes,
   Gauge,
