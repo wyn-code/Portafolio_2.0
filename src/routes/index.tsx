@@ -360,8 +360,10 @@ function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden">
+      <CommandRain />
       <div className="absolute inset-0 grid-bg [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
       <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-28 md:pt-32 md:pb-40 grid md:grid-cols-2 gap-12 items-center">
+
         <div className="space-y-6 animate-hero-fade-up">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 backdrop-blur-md px-3 py-1 font-mono text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-neon animate-pulse" />
