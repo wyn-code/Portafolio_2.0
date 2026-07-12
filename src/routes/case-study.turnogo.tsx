@@ -62,7 +62,7 @@ function CaseStudy() {
           <p className="text-muted-foreground leading-relaxed">{c.sections.arch.body}</p>
           <div className="mt-6 rounded-xl border border-border/60 bg-card/30 backdrop-blur-xl p-6">
             <div className="flex flex-col items-stretch gap-3">
-              {ARCH_STEPS.map((s) => (
+              {ARCH_STEPS.map((s, i) => (
                 <div key={s.label} className="flex flex-col items-center">
                   <div className="w-full max-w-sm mx-auto flex items-center gap-3 rounded-lg border border-neon/30 bg-background/50 px-4 py-3 shadow-[0_0_18px_var(--neon-dim)]">
                     <div className="flex h-9 w-9 items-center justify-center rounded-md border border-neon/40 text-neon">
@@ -70,7 +70,9 @@ function CaseStudy() {
                     </div>
                     <span className="font-mono text-sm text-foreground">{s.label}</span>
                   </div>
-                  <div className="h-6 w-px bg-gradient-to-b from-neon to-cyber my-1 last:hidden" aria-hidden />
+                  {i < ARCH_STEPS.length - 1 && (
+                    <div className="h-6 w-px bg-gradient-to-b from-neon to-cyber my-1" aria-hidden />
+                  )}
                 </div>
               ))}
             </div>
