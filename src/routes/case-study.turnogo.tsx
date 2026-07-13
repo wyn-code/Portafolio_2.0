@@ -14,7 +14,7 @@ import {
   Network,
   KeyRound,
 } from "lucide-react";
-import "@/lib/i18n";
+import "@/i18n";
 
 export const Route = createFileRoute("/case-study/turnogo")({
   head: () => ({

@@ -1,0 +1,15 @@
+export const COMMAND_LINES = [
+  "git status",
+  "git push",
+  "docker compose up",
+  "docker ps",
+  "uvicorn app.main:app --reload",
+  "python main.py",
+  "SELECT * FROM users;",
+  "JWT verified",
+  "REST API",
+  "async / await",
+  "FastAPI",
+  "PostgreSQL",
+  "Linux",
+];
