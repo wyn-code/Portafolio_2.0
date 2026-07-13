@@ -2,32 +2,34 @@ import type { Project } from "@/types";
 
 export const PROJECTS: Project[] = [
   {
-    title: "AuthVault API",
+    title: "Portfolio 2.0",
     desc: {
-      en: "JWT authentication service with refresh rotation, brute-force protection and role scopes.",
-      es: "Servicio de autenticación JWT con rotación de refresh, protección anti-fuerza bruta y roles.",
+      en: "Selected projects that showcase my experience building backend, frontend and full stack applications.",
+      es: "Proyectos seleccionados que muestran mi experiencia desarrollando aplicaciones backend, frontend y full stack.",
     },
-    tags: ["FastAPI", "PostgreSQL", "JWT", "Docker"],
-    github: "#",
-    demo: "#",
+    tags: [
+      "React",
+      "TypeScript",
+      "TanStack Router",
+      "Tailwind CSS",
+      "Vite",
+    ],
+    github: "https://github.com/wyn-code/Portafolio_2.0",
+    demo: "https://www.wyn-code.dev",
   },
   {
-    title: "Business Admin Panel",
+    title: "Car Dealer Management API",
     desc: {
-      en: "Admin dashboard to manage clients, staff and revenue with role-based access.",
-      es: "Panel administrativo para gestionar clientes, personal e ingresos con acceso por roles.",
+      en: "REST API developed as a university team project for managing vehicles, customers and sales. Built with ASP.NET, Entity Framework and SQL Server following layered architecture principles.",
+      es: "API REST desarrollada como proyecto universitario en equipo para gestionar vehículos, clientes y ventas. Construida con ASP.NET, Entity Framework y SQL Server siguiendo una arquitectura por capas.",
     },
-    tags: ["React", "TypeScript", "FastAPI", "PostgreSQL"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    title: "Automation Scripts",
-    desc: {
-      en: "Python scripts to automate repetitive tasks, exports and data pipelines.",
-      es: "Scripts Python para automatizar tareas repetitivas, exportaciones y pipelines de datos.",
-    },
-    tags: ["Python", "SQL", "Linux"],
-    github: "#",
+    tags: [
+      "ASP.NET",
+      "C#",
+      "Entity Framework",
+      "SQL Server",
+      "REST API",
+    ],
+    github: "https://github.com/wyn-code/API_car",
   },
 ];

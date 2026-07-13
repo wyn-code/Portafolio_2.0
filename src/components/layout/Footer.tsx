@@ -22,7 +22,9 @@ export function Footer() {
               key={s.label}
               href={s.href}
               aria-label={s.label}
-              className="p-2 rounded-md border border-border text-muted-foreground hover:text-neon hover:border-neon hover:bg-neon/10 hover:-translate-y-0.5 transition-all duration-300"
+              target={s.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={s.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+              className="rounded-md border border-border p-2 text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-neon hover:bg-neon/10 hover:text-neon"
             >
               <s.icon className="h-4 w-4" />
             </a>

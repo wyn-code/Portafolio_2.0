@@ -16,7 +16,7 @@ export const CONTACT_LINKS: SocialLink[] = [
 ];
 
 export const FOOTER_SOCIALS = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:hello@masscocobruno.dev", label: "Email" },
+  { icon: Github, href: "https://github.com/wyn-code", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/bruno-massocco-49b113307/", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:brunoo6.massocco@gmail.com", label: "Email" },
 ];
