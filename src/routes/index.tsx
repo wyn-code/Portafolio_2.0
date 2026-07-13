@@ -40,6 +40,10 @@ export const Route = createFileRoute("/")({
 function Portfolio() {
   const { i18n } = useTranslation();
 
+  console.log("Idioma:", i18n.language);
+console.log("Nav about:", i18n.t("nav.about"));
+console.log("Recursos:", i18n.getResourceBundle(i18n.language, "translation"));
+
   useEffect(() => {
     applyStoredTheme();
     restoreStoredLanguage(i18n);
