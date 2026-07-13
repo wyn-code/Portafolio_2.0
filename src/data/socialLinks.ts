@@ -1,6 +1,6 @@
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import type { ComponentType } from "react";
-import cv  from "../assets/CV_Massocco_Bruno.pdf"
+import cv from "../assets/CV_Massocco_Bruno.pdf";
 
 export interface SocialLink {
   key: string;

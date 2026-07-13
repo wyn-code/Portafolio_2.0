@@ -11,7 +11,7 @@ import {
   Mail,
 } from "lucide-react";
 
-import type { TechGroup } from "@/types";
+import type { TechGroup } from "../types";
 
 export const TECH_GROUPS: TechGroup[] = [
   // ==========================
