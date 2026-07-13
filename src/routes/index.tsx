@@ -13,7 +13,6 @@ import { Projects } from "@/features/projects/Projects";
 import { Techs } from "@/features/techs/Techs";
 import { restoreStoredLanguage } from "@/hooks/useLanguage";
 import { applyStoredTheme } from "@/hooks/useTheme";
-import "@/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,10 +38,6 @@ export const Route = createFileRoute("/")({
 
 function Portfolio() {
   const { i18n } = useTranslation();
-
-  console.log("Idioma:", i18n.language);
-console.log("Nav about:", i18n.t("nav.about"));
-console.log("Recursos:", i18n.getResourceBundle(i18n.language, "translation"));
 
   useEffect(() => {
     applyStoredTheme();
