@@ -1,6 +1,6 @@
 import { ArrowRight, Download } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
+import cv from '../../assets/CV_Massocco_Bruno.pdf'
 import { CommandRain } from "@/features/hero/CommandRain";
 import { HeroIllustration } from "@/features/hero/HeroIllustration";
 import { HERO_BADGES } from "@/data/heroBadges";
@@ -67,7 +67,7 @@ export function Hero() {
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#"
+              href={cv}
               download
               className="inline-flex items-center gap-2 rounded-md border border-border bg-card/40 backdrop-blur-md px-5 py-3 text-sm font-mono text-foreground hover:border-neon hover:text-neon hover:-translate-y-0.5 transition-all duration-300"
             >

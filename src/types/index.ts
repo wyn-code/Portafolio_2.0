@@ -25,7 +25,7 @@ export interface TechGroup {
 export type CertStatus = "completed" | "in_progress" | "planned";
 
 export interface Certification {
-  name: string;
+  name: LocalizedText;
   org: string;
   status: CertStatus;
 }
