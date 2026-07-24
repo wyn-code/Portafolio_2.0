@@ -8,9 +8,11 @@ import { About } from "@/features/about/About";
 import { Certifications } from "@/features/certifications/Certifications";
 import { Contact } from "@/features/contact/Contact";
 import { Hero } from "@/features/hero/Hero";
+import { HowIWork } from "@/features/how-i-work/HowIWork";
 import { FeaturedProject } from "@/features/projects/FeaturedProject";
 import { Projects } from "@/features/projects/Projects";
 import { Techs } from "@/features/techs/Techs";
+
 import { restoreStoredLanguage } from "@/hooks/useLanguage";
 import { applyStoredTheme } from "@/hooks/useTheme";
 
