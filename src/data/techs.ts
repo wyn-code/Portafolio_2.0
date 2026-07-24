@@ -13,6 +13,36 @@ import {
 
 import type { TechGroup } from "../types";
 
+export const TECH_YEARS: Record<string, string> = {
+  Python: "3+ yrs",
+  JavaScript: "3+ yrs",
+  TypeScript: "2 yrs",
+  "C#": "1 yr",
+  React: "2 yrs",
+  "Tailwind CSS": "2 yrs",
+  HTML5: "4+ yrs",
+  CSS3: "4+ yrs",
+  FastAPI: "2 yrs",
+  "ASP.NET": "1 yr",
+  "Node.js": "2 yrs",
+  PostgreSQL: "2 yrs",
+  "SQL Server": "1 yr",
+  MySQL: "2 yrs",
+  MongoDB: "1 yr",
+  Docker: "2 yrs",
+  Render: "1 yr",
+  Vercel: "1 yr",
+  Supabase: "1 yr",
+  Cloudflare: "1 yr",
+  Git: "4+ yrs",
+  GitHub: "4+ yrs",
+  GitLab: "1 yr",
+  Linux: "3+ yrs",
+  Windows: "10+ yrs",
+};
+
+
+
 export const TECH_GROUPS: TechGroup[] = [
   // ==========================
   // Core Stack
