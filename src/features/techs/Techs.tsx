@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { Reveal } from "@/components/animations/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { TECH_GROUPS } from "@/data/techs";
+import { TECH_GROUPS, TECH_YEARS } from "@/data/techs";
 import { useLang } from "@/hooks/useLang";
 
 export function Techs() {
