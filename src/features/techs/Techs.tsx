@@ -55,11 +55,15 @@ export function Techs() {
                 {g.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-xs text-foreground/90 transition-colors hover:border-neon/60 hover:text-neon"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background/40 px-2.5 py-1 font-mono text-xs text-foreground/90 transition-colors hover:border-neon/60 hover:text-neon"
                   >
                     {item}
+                    {TECH_YEARS[item] && (
+                      <span className="text-[10px] text-muted-foreground">· {TECH_YEARS[item]}</span>
+                    )}
                   </span>
                 ))}
+
               </div>
 
             </div>
