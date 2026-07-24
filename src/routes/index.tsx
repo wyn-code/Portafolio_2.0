@@ -53,8 +53,10 @@ function Portfolio() {
       <About />
       <FeaturedProject />
       <Projects />
-      <Techs />
-      <Certifications />
+        <Techs />
+        <HowIWork />
+        <Certifications />
+
       <Contact />
       <Footer />
     </div>
