@@ -97,6 +97,45 @@ export function Techs() {
             coreStack
           )}
 
+          {cloud && (
+            <Reveal>
+              <div className="rounded-2xl border border-neon/45 bg-card/40 p-6 backdrop-blur-xl shadow-[0_0_40px_var(--neon-dim)] md:p-8">
+                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                  <div className="max-w-md">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-neon/50 text-neon">
+                        <cloud.icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-display text-2xl font-bold tracking-tight text-foreground">
+                        {cloud.label[lang]}
+                      </h3>
+                    </div>
+                    <p className="font-mono text-xs leading-relaxed text-muted-foreground">
+                      {lang === "en"
+                        ? "$ containerize --docker · deploy --ci-cd · monitor --prod"
+                        : "$ containerizar --docker · desplegar --ci-cd · monitorear --prod"}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2.5">
+                    {cloud.items.map((item) => (
+                      <span
+                        key={item}
+                        className="terminal-badge text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_18px_var(--neon-dim)]"
+                      >
+                        {item}
+                        {TECH_YEARS[item] && (
+                          <span className="ml-1.5 text-[10px] text-muted-foreground">
+                            · {TECH_YEARS[item]}
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
+
           {renderSection(
             lang === "en"
               ? "Infrastructure & Integrations"
