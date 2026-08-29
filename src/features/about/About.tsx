@@ -8,9 +8,9 @@ import { useLang } from "@/hooks/useLang";
 const CONTENT = {
   en: {
     paragraphs: [
-      "I'm Massocco Bruno, a Backend & Full Stack Developer based in Buenos Aires, Argentina. I enjoy turning real business problems into reliable software — REST APIs, clean data models and platforms designed to run in production, not just in a demo.",
-      "I solve problems by thinking in systems: understand the domain, design a clean architecture, model the data, then build backend and frontend end-to-end so the product ships fast without cutting corners on quality.",
-      "Backend engineering motivates me because it's where scalability, security and business logic meet. Right now I'm also deepening my knowledge in Linux, cloud infrastructure and cybersecurity to build systems I'd be comfortable running myself.",
+      "I'm Massocco Bruno, a Backend & Full Stack Developer based in Buenos Aires, Argentina. I design and build REST APIs and platforms that are meant to run in production: clean layered architecture, solid data models and deployments I can reason about.",
+      "My work leans on infrastructure and good delivery practices — containerizing services with Docker, automating builds and CI/CD pipelines, managing PostgreSQL databases in production, and monitoring what happens after release, not just before it.",
+      "Security is part of the design, not an afterthought: JWT auth, least-privilege access and hardened deployments. I'm also certified in Ethical Hacking, which gives me an attacker's perspective when reviewing my own systems.",
     ],
     location: "Buenos Aires, Argentina — open to remote roles worldwide",
     languagesLabel: "Languages I speak",
@@ -28,9 +28,9 @@ const CONTENT = {
   },
   es: {
     paragraphs: [
-      "Soy Massocco Bruno, Desarrollador Backend & Full Stack radicado en Buenos Aires, Argentina. Disfruto convertir problemas reales de negocio en software confiable — APIs REST, modelos de datos limpios y plataformas diseñadas para producción, no solo para una demo.",
-      "Resuelvo problemas pensando en sistemas: entender el dominio, diseñar una arquitectura limpia, modelar los datos, y construir backend y frontend end-to-end para entregar rápido sin sacrificar calidad.",
-      "El backend me motiva porque ahí se encuentran la escalabilidad, la seguridad y la lógica de negocio. Actualmente también profundizo en Linux, infraestructura cloud y ciberseguridad para construir sistemas que yo mismo pondría en producción.",
+      "Soy Massocco Bruno, Desarrollador Backend & Full Stack radicado en Buenos Aires, Argentina. Diseño y construyo APIs REST y plataformas pensadas para correr en producción: arquitectura limpia por capas, modelos de datos sólidos y despliegues que puedo explicar de punta a punta.",
+      "Mi trabajo se apoya en la infraestructura y en buenas prácticas de entrega — containerizar servicios con Docker, automatizar builds y pipelines de CI/CD, administrar bases PostgreSQL en producción y monitorear lo que pasa después del release, no solo antes.",
+      "La seguridad es parte del diseño, no un extra: autenticación JWT, mínimo privilegio y despliegues endurecidos. Además cuento con certificación en Ethical Hacking, lo que me da la mirada del atacante al revisar mis propios sistemas.",
     ],
     location: "Buenos Aires, Argentina — abierto a roles remotos en cualquier país",
     languagesLabel: "Idiomas que hablo",
