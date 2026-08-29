@@ -13,8 +13,10 @@ export function Techs() {
     ["languages", "frontend", "backend", "database"].includes(g.key)
   );
 
+  const cloud = TECH_GROUPS.find((g) => g.key === "cloud");
+
   const infrastructure = TECH_GROUPS.filter((g) =>
-    ["cloud", "services", "automation"].includes(g.key)
+    ["services", "automation"].includes(g.key)
   );
 
   const tools = TECH_GROUPS.filter((g) =>
