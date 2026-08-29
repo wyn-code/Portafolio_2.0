@@ -4,8 +4,8 @@ export const PROJECTS: Project[] = [
   {
     title: "Portfolio 2.0",
     desc: {
-      en: "Selected projects that showcase my experience building backend, frontend and full stack applications.",
-      es: "Proyectos seleccionados que muestran mi experiencia desarrollando aplicaciones backend, frontend y full stack.",
+      en: "Personal portfolio built as a production-grade frontend: typed component architecture, i18n, accessibility and an automated build pipeline deployed on edge infrastructure.",
+      es: "Portfolio personal construido como frontend de nivel producción: arquitectura de componentes tipada, i18n, accesibilidad y pipeline de build automatizado desplegado en infraestructura edge.",
     },
     tags: [
       "React",
@@ -20,8 +20,8 @@ export const PROJECTS: Project[] = [
   {
     title: "Car Dealer Management API",
     desc: {
-      en: "REST API developed as a university team project for managing vehicles, customers and sales. Built with ASP.NET, Entity Framework and SQL Server following layered architecture principles.",
-      es: "API REST desarrollada como proyecto universitario en equipo para gestionar vehículos, clientes y ventas. Construida con ASP.NET, Entity Framework y SQL Server siguiendo una arquitectura por capas.",
+      en: "REST API for managing vehicles, customers and sales, built as a university team project. Layered architecture, relational data modeling with Entity Framework and SQL Server, versioned endpoints and role-based access control.",
+      es: "API REST para gestionar vehículos, clientes y ventas, desarrollada como proyecto universitario en equipo. Arquitectura por capas, modelado relacional con Entity Framework y SQL Server, endpoints versionados y control de acceso por roles.",
     },
     tags: [
       "ASP.NET",
