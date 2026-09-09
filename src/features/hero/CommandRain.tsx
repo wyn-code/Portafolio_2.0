@@ -26,7 +26,7 @@ export function CommandRain() {
         left: (i / count) * 100 + rand(-2, 2),
         delay: -rand(0, 24),
         duration: rand(28, 46),
-        opacity: rand(0.02, 0.04),
+        opacity: rand(0.08, 0.16),
         lines: shuffle(COMMAND_LINES).slice(0, 7),
       })),
     );
