@@ -79,7 +79,7 @@ export function HowIWork() {
   const c = COPY[lang];
 
   return (
-    <section id="how-i-work" className="relative py-24 md:py-28 border-t border-border/50">
+    <section id="how-i-work" className="relative py-16 md:py-20 border-t border-border/50">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader eyebrow={c.eyebrow} title={c.title} subtitle={c.subtitle} />
 

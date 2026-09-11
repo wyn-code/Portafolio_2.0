@@ -19,7 +19,7 @@ export function   FeaturedProject() {
   const viewCase = lang === "en" ? "View Case Study" : "Ver Caso de Estudio";
 
   return (
-    <section id="featured" className="relative py-24 md:py-28 border-t border-border/50">
+    <section id="featured" className="relative py-16 md:py-20 border-t border-border/50">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
           eyebrow={lang === "en" ? "02 · featured project" : "02 · proyecto destacado"}

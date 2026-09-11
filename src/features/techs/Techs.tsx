@@ -78,7 +78,7 @@ export function Techs() {
   return (
     <section
       id="techs"
-      className="relative border-t border-border/50 py-24 md:py-28"
+      className="relative border-t border-border/50 py-16 md:py-20"
     >
       <div className="mx-auto max-w-6xl px-6">
 

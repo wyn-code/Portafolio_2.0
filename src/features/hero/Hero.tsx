@@ -30,7 +30,7 @@ export function Hero() {
   const c = COPY[lang];
 
   return (
-    <section id="top" className="relative flex min-h-[85vh] items-center justify-center px-6 py-24">
+    <section id="top" className="relative flex min-h-[85vh] items-center justify-center px-6 py-16 md:py-20">
       <CommandRain />
       <div
         className="absolute inset-0 z-[1]"

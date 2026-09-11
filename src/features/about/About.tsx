@@ -54,7 +54,7 @@ export function About() {
   const c = CONTENT[lang];
 
   return (
-    <section id="about" className="relative py-24 md:py-28 border-t border-border/50">
+    <section id="about" className="relative py-16 md:py-20 border-t border-border/50">
       <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-5 gap-12">
         <div className="md:col-span-2">
           <SectionHeader eyebrow="01 · about" title={t("about.title")} />

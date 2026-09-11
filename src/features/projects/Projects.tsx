@@ -11,7 +11,7 @@ export function Projects() {
   const lang = useLang();
 
   return (
-    <section id="projects" className="relative py-24 md:py-28 border-t border-border/50">
+    <section id="projects" className="relative py-16 md:py-20 border-t border-border/50">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
           eyebrow={lang === "en" ? "03 · other projects" : "03 · otros proyectos"}

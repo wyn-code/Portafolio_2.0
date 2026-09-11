@@ -9,7 +9,7 @@ export function Contact() {
   const { t } = useTranslation();
 
   return (
-    <section id="contact" className="relative py-24 md:py-28 border-t border-border/50">
+    <section id="contact" className="relative py-16 md:py-20 border-t border-border/50">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader eyebrow="06 · contact" title={t("contact.title")} subtitle={t("contact.subtitle")} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
