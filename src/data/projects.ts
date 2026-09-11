@@ -32,4 +32,21 @@ export const PROJECTS: Project[] = [
     ],
     github: "https://github.com/wyn-code/API_car",
   },
+  {
+    title: "Calendar Pro",
+    desc: {
+      en: "Custom appointments & invoicing platform for a real medical practice with two clinics — multi-office billing logic, Google Drive integration, Excel/PDF export and an isolated demo environment.",
+      es: "Plataforma a medida de turnos y facturación para un consultorio real con dos sedes — facturación multi-consultorio, integración con Google Drive, exportación a Excel/PDF y ambiente de demo aislado.",
+    },
+    tags: [
+      "React",
+      "TypeScript",
+      "shadcn/ui",
+      "TanStack Query",
+      "Neon Postgres",
+      "Render",
+      "Vercel",
+    ],
+    github: "https://github.com/wyn-code/Calendar_Proyect",
+  },
 ];
